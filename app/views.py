@@ -108,7 +108,10 @@ def answer(request) :
 	today_info = today.strftime('%Y년 %m월 %d일')
 	today_weekday = today.weekday()
 
-	if content_name == '향설1 생활관' :
+	if content_name == '학식' :
+		return food_sel_process('')
+
+	elif content_name == '향설1 생활관' :
 
 		try :
 			with open('app/menu/SnowFlowerOne.json', 'rb') as f :
@@ -270,12 +273,16 @@ def answer(request) :
 			else :
 				meal = '\n주말에 '+ content_name + '은\n운영하지 않습니다.'
 
-	except Exception as e:
-		meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
+		except Exception as e:
+			meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
 
-	send_message = select_button.format(content_name, today_info) + meal
+		send_message = select_button.format(content_name, today_info) + meal
 
-	return re_process(send_message)
+		return re_process(send_message)
+
+	elif content_name == '처음으로' :
+		return re_process('')
+
 
 	elif content_name == '종강' :
 
