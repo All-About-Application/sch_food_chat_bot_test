@@ -281,7 +281,7 @@ def answer(request) :
 		return re_process(send_message)
 
 	elif content_name == '처음으로' :
-		return keyboard()
+		return re_process(content_name)
 
 
 	elif content_name == '종강' :
