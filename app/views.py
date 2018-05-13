@@ -109,7 +109,7 @@ def answer(request) :
 	today_weekday = today.weekday()
 
 	if content_name == '학식' :
-		return food_sel_process('')
+		return food_sel_process()
 
 	elif content_name == '향설1 생활관' :
 
