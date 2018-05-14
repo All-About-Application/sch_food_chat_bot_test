@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from app.my_module import button, repdic
 from pytz import timezone
 from bs4 import BeautifulSoup
-from my_module import button, repdic
 import requests, os, re
 import datetime
 import json
@@ -40,7 +40,7 @@ def char_replace(meal) :
 	# meal = meal.replace('-컵밥-', '\n[컵밥]')
 	# meal = meal.replace('-중식-', '\n[중식]')
 	# meal = meal.replace('-석식-', '\n[석식]')
-	# meal = meal.replace('-한식-', '\n[한식]')
+	# meal = meal.replace('-한식-',  '\n[한식]')
 	# meal = meal.replace('-덮밥-', '\n[덮밥]')
 	# meal = meal.replace('-양식-', '\n[양식]')
 	# meal = meal.replace('-도시락-', '\n[도시락]')
