@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from app.my_module import button, repdic
+from app.my_module.button import *
+from app.my_module.repdic import *
 from pytz import timezone
 from bs4 import BeautifulSoup
 import requests, os, re
