@@ -69,7 +69,7 @@ def re_process(output) :
             'keyboard':
 			{
                 'type': 'buttons',
-                'buttons' : my_module.button.basic_button
+                'buttons' : basic_button
             }
         }
 	)
@@ -86,7 +86,7 @@ def food_sel_process() :
 			'keyboard' :
 			{
 				'type' : 'buttons',
-				'buttons' : my_module.button.food_sel_process_button
+				'buttons' : food_sel_process_button
 			}
 		}
 	)
