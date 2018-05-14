@@ -30,7 +30,7 @@ select_button = '[*] 선택한 버튼 : {0}\n[*] {1}의\n[*] {0} 메뉴입니다
 # 데이터를 보기 좋게 출력하기 위한 문자열 처리 함수
 def char_replace(meal) :
 
-	for key, value in my_module.repdic.trans_dic.items() :
+	for key, value in trans_dic.items() :
 
 		meal = meal.replace(key, value)
 
