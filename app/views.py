@@ -3,8 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from pytz import timezone
 from bs4 import BeautifulSoup
-import app/my_module/button
-import app/my_module/rep_dic
+import my_module/button
+import my_module/rep_dic
 import requests, os, re
 import datetime
 import json
@@ -31,7 +31,7 @@ select_button = '[*] 선택한 버튼 : {0}\n[*] {1}의\n[*] {0} 메뉴입니다
 def char_replace(meal) :
 
 	for key, value in trans_dic.items() :
-		
+
 		meal = meal.replace(key, value)
 
 	# meal = meal.translate({ ord('['): '', ord(']'): '', ord('{'): '', ord('}'): '', ord("'"): '', ord(','): '\n', ord(':'): '\n',ord(' '): ''})
