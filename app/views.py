@@ -276,9 +276,10 @@ def answer(request) :
 		# 종강 일
 		finish = datetime.datetime(2018, 6, 22)
 		finish_info = finish.strftime('%Y년 %m월 %d일')
-		date_dif = (finish - today).strftime('%d')
+		date_dif = finish - today
+		date_dif_info = date_dif.strftime('%d')
 
-		send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, date_dif)
+		send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, date_dif_info)
 
 		return re_process(send_message)
 
