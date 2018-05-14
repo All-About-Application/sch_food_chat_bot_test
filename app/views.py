@@ -3,9 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from app.my_module.button import *
 from app.my_module.repdic import *
+from app.my_module.scheduleparser import *
 from pytz import timezone
-from bs4 import BeautifulSoup
-import requests, os, re
+#from bs4 import BeautifulSoup
+import requests #, os, re
 import datetime
 import json
 
@@ -33,27 +34,6 @@ def char_replace(meal) :
 	for key, value in trans_dic.items() :
 
 		meal = meal.replace(key, value)
-
-	# meal = meal.translate({ ord('['): '', ord(']'): '', ord('{'): '', ord('}'): '', ord("'"): '', ord(','): '\n', ord(':'): '\n',ord(' '): ''})
-	# meal = meal.replace('\n', '\n·')
-	# meal = meal.replace('-중식/석식-', '\n[중식/석식]')
-	# meal = meal.replace('-조식-', '\n[조식]')
-	# meal = meal.replace('-컵밥-', '\n[컵밥]')
-	# meal = meal.replace('-중식-', '\n[중식]')
-	# meal = meal.replace('-석식-', '\n[석식]')
-	# meal = meal.replace('-한식-',  '\n[한식]')
-	# meal = meal.replace('-덮밥-', '\n[덮밥]')
-	# meal = meal.replace('-양식-', '\n[양식]')
-	# meal = meal.replace('-도시락-', '\n[도시락]')
-	# meal = meal.replace('-스페셜메뉴-', '\n[스페셜메뉴]')
-	# meal = meal.replace('-돈까스-', '\n[돈까스]')
-	# meal = meal.replace('-라면-', '\n[라면]')
-	# meal = meal.replace('-메뉴-', '\n[메뉴]')
-	# meal = meal.replace('-부대라면-', '\n[부대라면]')
-	# meal = meal.replace('-한정메뉴-', '\n[한정메뉴]')
-	# meal = meal.replace('-샐러드바-', '\n[샐러드바]')
-	# meal = meal.replace('\n·\n', '\n\n')
-	# meal = meal.replace('·', '· ')
 
 	return meal
 
@@ -303,51 +283,53 @@ def answer(request) :
 
 	elif content_name == '학사 일정' :
 
-		# Location of parser.py
-		BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-		# HTTP GET Request
-		request =  requests.get('https://homepage.sch.ac.kr/sch/05/05010000.jsp')
-
-		# GET HTML Source
-		html = request.text
-
-		# Use BeautifulSoup, From HTML Source to Python Object
-		# First Parameter is HTML Source, Second Parameter is the parser to be used
-		soup = BeautifulSoup(html, 'html.parser')
-
-		# HTML element using CSS Selector
-		schedules = soup.find_all('a', {'class' : 'schedule'})
-
-		schedule_day = []
-		schedule_list = []
-
-		for schedule in schedules:
-		    # 날짜 가져오기
-		    schedule_day.append(schedule.text)
-		    # 세부 내용 가져오기
-		    schedule_list.append(schedule.get('title'))
-
-		idx = 0
-
-		today_info = today.strftime('%Y년 %m월')
-
-		result_message = '의 학사일정'
-
-		for schedule in schedule_day :
-			schedule_message = '\n[' + str(schedule) + '일 일정]\n' + '· ' + schedule_list[idx]
-			result_message = str(result_message) + schedule_message
-			idx += 1
-
-		# GET HTTP Header
-		header = request.headers
-
-		# GET HTTP Status ( 200 : normal )
-		status = request.status_code
-
-		# Check HTTP ( TRUE / FALSE )
-		is_HTTP_OK = request.ok
-
+		# # Location of parser.py
+		# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+		#
+		# # HTTP GET Request
+		# request =  requests.get('https://homepage.sch.ac.kr/sch/05/05010000.jsp')
+		#
+		# # GET HTML Source
+		# html = request.text
+		#
+		# # Use BeautifulSoup, From HTML Source to Python Object
+		# # First Parameter is HTML Source, Second Parameter is the parser to be used
+		# soup = BeautifulSoup(html, 'html.parser')
+		#
+		# # HTML element using CSS Selector
+		# schedules = soup.find_all('a', {'class' : 'schedule'})
+		#
+		# schedule_day = []
+		# schedule_list = []
+		#
+		# for schedule in schedules:
+		#     # 날짜 가져오기
+		#     schedule_day.append(schedule.text)
+		#     # 세부 내용 가져오기
+		#     schedule_list.append(schedule.get('title'))
+		#
+		# idx = 0
+		#
+		# today_info = today.strftime('%Y년 %m월')
+		#
+		# result_message = '의 학사일정'
+		#
+		# for schedule in schedule_day :
+		# 	schedule_message = '\n[' + str(schedule) + '일 일정]\n' + '· ' + schedule_list[idx]
+		# 	result_message = str(result_message) + schedule_message
+		# 	idx += 1
+		#
+		# # GET HTTP Header
+		# header = request.headers
+		#
+		# # GET HTTP Status ( 200 : normal )
+		# status = request.status_code
+		#
+		# # Check HTTP ( TRUE / FALSE )
+		# is_HTTP_OK = request.ok
+		#
+		#
+		result_message = parser()
 		send_message = '[*] 선택한 버튼 : ' + content_name + '\n[*] ' + today_info + result_message
 
 		return re_process(send_message)
