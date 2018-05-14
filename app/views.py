@@ -278,7 +278,7 @@ def answer(request) :
 		finish_info = finish.strftime('%Y년 %m월 %d일')
 		date_dif = finish - today
 
-		send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, str(date_dif))
+		send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, date_dif)
 
 		return re_process(send_message)
 
@@ -294,7 +294,7 @@ def answer(request) :
 
 	elif content_name == '개발자 정보' :
 
-		send_message = select_else_button.format(content_name) + '\n' + dev_info
+		send_message = select_else_button.format(content_name) + dev_info
 
 		return re_process(send_message)
 
