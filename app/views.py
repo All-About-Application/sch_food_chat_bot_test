@@ -5,10 +5,7 @@ from app.my_module.button import *
 from app.my_module.repdic import *
 from app.my_module.scheduleparser import *
 from pytz import timezone
-#from bs4 import BeautifulSoup
-import requests #, os, re
-import datetime
-import json
+import requests, datetime, json
 
 # 데이터 목록
 # menu/SnowFlowerOne.json     향설1 생활관
