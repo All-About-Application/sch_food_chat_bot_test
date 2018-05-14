@@ -281,8 +281,8 @@ def answer(request) :
 			date_dif_info = date_dif.strftime('%d일')
 
 			send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, date_dif_info)
-			
-		except Exception e :
+
+		except Exception as e :
 			send_message = str(e)
 
 		return re_process(send_message)
