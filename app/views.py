@@ -30,7 +30,7 @@ select_button = '[*] 선택한 버튼 : {0}\n[*] {1}의\n[*] {0} 메뉴입니다
 # 데이터를 보기 좋게 출력하기 위한 문자열 처리 함수
 def char_replace(meal) :
 
-	for key, value in trans_dic.items() :
+	for key, value in repdic.trans_dic.items() :
 
 		meal = meal.replace(key, value)
 
@@ -69,7 +69,7 @@ def re_process(output) :
             'keyboard':
 			{
                 'type': 'buttons',
-                'buttons' : repdic.basic_button
+                'buttons' : button.basic_button
             }
         }
 	)
@@ -86,7 +86,7 @@ def food_sel_process() :
 			'keyboard' :
 			{
 				'type' : 'buttons',
-				'buttons' : repdic.food_sel_process_button
+				'buttons' : button.food_sel_process_button
 			}
 		}
 	)
@@ -96,7 +96,7 @@ def keyboard(request) :
 	return JsonResponse (
 		{
 		'type' : 'buttons',
-		'buttons' : repdic.basic_button
+		'buttons' : button.basic_button
 		}
 	)
 
