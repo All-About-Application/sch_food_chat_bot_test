@@ -267,7 +267,7 @@ def answer(request) :
 
 		return re_process(content_name)
 
-	elif content_name == '교내 Wi-Fi 사용' :
+	elif content_name == '교내 Wi-Fi' :
 
 		wifi_info = '[*] ID : H(대문자) + 학번(8자리)\n[*] 예시 : H20171234\n[*] 비밀번호 : 생년월일\n[*] 예시 : 980101'
 
