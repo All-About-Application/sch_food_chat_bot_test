@@ -269,7 +269,10 @@ def answer(request) :
 
 	elif content_name == '교내 Wi-Fi' :
 
-		wifi_info = '[*] ID : H(대문자) + 학번(8자리)\n[*] 예시 : H20171234\n[*] 비밀번호 : 생년월일\n[*] 예시 : 980101'
+		wifi_info = '''[*] ID : H(대문자)+학번(8자리)
+		[*] 비밀번호 : 생년월일
+		[*] 예시 : H20171234
+		[*] 예시 : 980101'''
 
 		send_message = '[*] 선택한 버튼 : ' + content_name + '\n' + wifi_info
 
@@ -303,14 +306,5 @@ def answer(request) :
 	else :
 
 		error_message = '[*] 심각한 오류입니다.\n[*] 개발자에게 알려주세요'
-
-		if type_name == 'photo' :
-			error_message = '[*] 사진을 보내도 기능이 없네요.\n[*] 버튼을 눌러주세요!'
-
-		elif type_name == 'video' :
-			error_message = '[*] 영상을 보내도 기능이 없네요.\n[*] 버튼을 눌러주세요!'
-
-		elif type_name == 'audio' :
-			error_message = '[*] 녹음 파일을 보내도 기능이 없네요.\n[*] 버튼을 눌러주세요!'
 
 		return re_process(error_message)
