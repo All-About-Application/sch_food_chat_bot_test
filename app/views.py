@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from app.my_module.button import *
 from app.my_module.repdic import *
 from app.my_module.scheduleparser import *
-from app.my_module.stringformat.py import *
+from app.my_module.stringformat import *
 from pytz import timezone
 import requests, datetime, json
 
