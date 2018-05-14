@@ -269,10 +269,7 @@ def answer(request) :
 
 	elif content_name == '교내 Wi-Fi' :
 
-		wifi_info = '''[*] ID : H(대문자)+학번(8자리)
-		[*] 비밀번호 : 생년월일
-		[*] 예시 : H20171234
-		[*] 예시 : 980101'''
+		wifi_info = '[*] ID : H(대문자)+학번(8자리)\n[*] 비밀번호 : 생년월일\n[*] 예시 : H20171234\n[*] 예시 : 980101'
 
 		send_message = '[*] 선택한 버튼 : ' + content_name + '\n' + wifi_info
 
