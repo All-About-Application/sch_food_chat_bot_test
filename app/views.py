@@ -267,8 +267,8 @@ def answer(request) :
 		return re_process(send_message)
 
 	elif content_name == '처음으로' :
+		
 		return re_process('')
-
 
 	elif content_name == '종강' :
 
@@ -283,53 +283,8 @@ def answer(request) :
 
 	elif content_name == '학사 일정' :
 
-		# # Location of parser.py
-		# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-		#
-		# # HTTP GET Request
-		# request =  requests.get('https://homepage.sch.ac.kr/sch/05/05010000.jsp')
-		#
-		# # GET HTML Source
-		# html = request.text
-		#
-		# # Use BeautifulSoup, From HTML Source to Python Object
-		# # First Parameter is HTML Source, Second Parameter is the parser to be used
-		# soup = BeautifulSoup(html, 'html.parser')
-		#
-		# # HTML element using CSS Selector
-		# schedules = soup.find_all('a', {'class' : 'schedule'})
-		#
-		# schedule_day = []
-		# schedule_list = []
-		#
-		# for schedule in schedules:
-		#     # 날짜 가져오기
-		#     schedule_day.append(schedule.text)
-		#     # 세부 내용 가져오기
-		#     schedule_list.append(schedule.get('title'))
-		#
-		# idx = 0
-		#
-		# today_info = today.strftime('%Y년 %m월')
-		#
-		# result_message = '의 학사일정'
-		#
-		# for schedule in schedule_day :
-		# 	schedule_message = '\n[' + str(schedule) + '일 일정]\n' + '· ' + schedule_list[idx]
-		# 	result_message = str(result_message) + schedule_message
-		# 	idx += 1
-		#
-		# # GET HTTP Header
-		# header = request.headers
-		#
-		# # GET HTTP Status ( 200 : normal )
-		# status = request.status_code
-		#
-		# # Check HTTP ( TRUE / FALSE )
-		# is_HTTP_OK = request.ok
-		#
-		#
 		result_message = parser()
+
 		send_message = '[*] 선택한 버튼 : ' + content_name + '\n[*] ' + today_info + result_message
 
 		return re_process(send_message)
