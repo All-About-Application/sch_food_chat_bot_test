@@ -278,9 +278,9 @@ def answer(request) :
 			finish = datetime.datetime(2018, 6, 22)
 			finish_info = finish.strftime('%Y년 %m월 %d일')
 			date_dif = finish - today
-			date_dif_info = date_dif.strftime('%d일')
 
-			send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, date_dif_info)
+
+			send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, date_dif.days)
 
 		except Exception as e :
 			send_message = str(e)
