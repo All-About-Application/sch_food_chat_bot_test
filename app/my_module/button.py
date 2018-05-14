@@ -1,7 +1,7 @@
 # views.py의 keyboard에서 사용할 버튼
 
 basic_button = [
-'오늘 학식',
+'학식',
 '종강',
 '학사 일정',
 '교내 Wi-Fi 사용',
