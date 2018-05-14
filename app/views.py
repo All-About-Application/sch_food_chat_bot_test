@@ -265,7 +265,7 @@ def answer(request) :
 
 	elif content_name == '처음으로' :
 
-		return re_process()
+		return keyboard()
 
 	elif content_name == '종강' :
 
