@@ -1,4 +1,4 @@
-# views.py의 keyboard에서 사용할 버튼
+# views.py의 keyboard에서 사용할 버튼 모듈
 
 basic_button = [
 '학식',

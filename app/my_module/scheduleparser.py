@@ -1,3 +1,5 @@
+# 학사 일정 파싱 모듈
+
 from pytz import timezone
 from bs4 import BeautifulSoup
 import requests, os, re
