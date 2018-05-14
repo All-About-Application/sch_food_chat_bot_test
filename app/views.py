@@ -96,7 +96,7 @@ def keyboard(request) :
 	return JsonResponse (
 		{
 		'type' : 'buttons',
-		'buttons' : button.basic_button
+		'buttons' : basic_button
 		}
 	)
 
