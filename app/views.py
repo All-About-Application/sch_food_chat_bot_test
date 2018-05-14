@@ -3,8 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from pytz import timezone
 from bs4 import BeautifulSoup
-import .app/my_module/button
-import .app/my_module/rep_dic
+import my_module/button
+import my_module/rep_dic
 import requests, os, re
 import datetime
 import json
