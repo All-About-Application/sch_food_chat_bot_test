@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from app.my_module.button import *
 from app.my_module.repdic import *
 from app.my_module.scheduleparser import *
+from app.my_module.stringformat.py import *
 from pytz import timezone
 import requests, datetime, json
 
@@ -125,10 +126,10 @@ def answer(request) :
 				meal = char_replace(meal)
 
 			else :
-				meal = '\n일요일에 ' + content_name + ' 식당은\n운영하지 않습니다.'
+				meal = sun_except.format(content_name)
 
 		except Exception as e:
-			meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
+			meal = str(e) + json_open_error
 
 		send_message = select_button.format(content_name, today_info) + meal
 
@@ -145,10 +146,10 @@ def answer(request) :
 				meal = char_replace(meal)
 
 			else :
-				meal = '\n주말에 ' + content_name + ' 식당은\n운영하지 않습니다.'
+				meal = weekend_except.format(content_name)
 
 		except Exception as e:
-			meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
+			meal = str(e) + json_open_error
 
 		send_message = select_button.format(content_name, today_info) + meal
 
@@ -185,7 +186,7 @@ def answer(request) :
 				meal = char_replace(meal)
 
 		except Exception as e:
-			meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
+			meal = str(e) + json_open_error
 
 		send_message = select_button.format(content_name, today_info) + meal
 
@@ -218,10 +219,10 @@ def answer(request) :
 				meal = char_replace(meal)
 
 			else :
-				meal = '\n주말에 ' + content_name + ' 식당은\n운영하지 않습니다.'
+				meal = weekend_except.format(content_name)
 
 		except Exception as e:
-			meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
+			meal = str(e) + json_open_error
 
 		send_message = select_button.format(content_name, today_info) + meal
 
@@ -254,10 +255,10 @@ def answer(request) :
 				meal = char_replace(meal)
 
 			else :
-				meal = '\n주말에 '+ content_name + '은\n운영하지 않습니다.'
+				meal = weekend_except.format(content_name)
 
 		except Exception as e:
-			meal = str(e) + '\n에러메세지가 보이면 관리자에게 알려주세요.'
+			meal = str(e) + json_open_error
 
 		send_message = select_button.format(content_name, today_info) + meal
 
@@ -269,9 +270,7 @@ def answer(request) :
 
 	elif content_name == '교내 Wi-Fi' :
 
-		wifi_info = '[*] ID : H(대문자)+학번(8자리)\n[*] 비밀번호 : 생년월일\n[*] 예시 : H20171234\n[*] 예시 : 980101'
-
-		send_message = '[*] 선택한 버튼 : ' + content_name + '\n' + wifi_info
+		send_message = select_else_button.format(content_name) + wifi_info
 
 		return re_process(send_message)
 
@@ -282,7 +281,7 @@ def answer(request) :
 		finish_info = finish.strftime('%Y년 %m월 %d일')
 		date_dif = finish - today
 
-		send_message = '[*] 선택한 버튼 : ' + content_name + '\n[*] 오늘 : ' + today_info + '\n[*] 종강 : ' + finish_info + '\n[*] 종강까지 %d일 남았습니다.' % date_dif.days
+		send_message = select_else_button.format(content_name) + end_day.format(today_info, finish_info, str(date_dif))
 
 		return re_process(send_message)
 
@@ -290,18 +289,20 @@ def answer(request) :
 
 		result_message = parser()
 
-		send_message = '[*] 선택한 버튼 : ' + content_name + '\n[*] ' + today_info + result_message
+		today_info = today.strftime('%Y년 %m월')
+
+		send_message =  select_else_button.format(content_name) + '[*] ' + today_info + result_message
 
 		return re_process(send_message)
 
 	elif content_name == '개발자 정보' :
 
-		send_message = '[*] 선택한 버튼 : ' + content_name + '\n' + dev_info
+		send_message = select_else_button.format(content_name) + '\n' + dev_info
 
 		return re_process(send_message)
 
 	else :
 
-		error_message = '[*] 심각한 오류입니다.\n[*] 개발자에게 알려주세요'
+		error_message = fatal_error
 
 		return re_process(error_message)

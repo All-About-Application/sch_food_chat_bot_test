@@ -3,7 +3,6 @@
 from pytz import timezone
 from bs4 import BeautifulSoup
 import requests, os, re
-import datetime
 import json
 
 def parser() :
@@ -23,10 +22,6 @@ def parser() :
 
 	# HTML element using CSS Selector
 	schedules = soup.find_all('a', {'class' : 'schedule'})
-
-	# 오늘
-	today = datetime.datetime.now()
-	today_info = today.strftime('%Y년 %m월')
 
 	schedule_day = []
 	schedule_list = []
