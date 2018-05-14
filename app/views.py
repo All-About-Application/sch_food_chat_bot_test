@@ -70,8 +70,8 @@ def keyboard(request) :
 
 	return JsonResponse (
 		{
-		'type' : 'buttons',
-		'buttons' : basic_button
+			'type' : 'buttons',
+			'buttons' : basic_button
 		}
 	)
 
