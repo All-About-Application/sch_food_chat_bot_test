@@ -69,7 +69,7 @@ def re_process(output) :
             'keyboard':
 			{
                 'type': 'buttons',
-                'buttons' : basic_button
+                'buttons' : repdic.basic_button
             }
         }
 	)
@@ -86,7 +86,7 @@ def food_sel_process() :
 			'keyboard' :
 			{
 				'type' : 'buttons',
-				'buttons' : food_sel_process_button
+				'buttons' : repdic.food_sel_process_button
 			}
 		}
 	)
@@ -96,7 +96,7 @@ def keyboard(request) :
 	return JsonResponse (
 		{
 		'type' : 'buttons',
-		'buttons' : basic_button
+		'buttons' : repdic.basic_button
 		}
 	)
 
