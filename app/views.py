@@ -265,7 +265,15 @@ def answer(request) :
 
 	elif content_name == '처음으로' :
 
-		return keyboard()
+		return re_process(content_name)
+
+	elif content_name == '교내 Wi-Fi 사용' :
+
+		wifi_info = '[*] 아이디 : H(대문자) + 학번(8자리)\n[*] 예시 : H20171234\n[*] 비밀번호 : 생년월일\n[*] 예시 : 980101'
+
+		send_message = '[*] 선택한 버튼 : ' + content_name + '\n' + wifi_info
+
+		return re_process(send_message)
 
 	elif content_name == '종강' :
 
