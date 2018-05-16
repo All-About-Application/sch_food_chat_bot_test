@@ -35,12 +35,3 @@ def food_sel_process() :
 			}
 		}
 	)
-
-def keyboard(request) :
-
-	return JsonResponse (
-		{
-			'type' : 'buttons',
-			'buttons' : basic_button
-		}
-	)

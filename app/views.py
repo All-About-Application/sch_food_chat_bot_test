@@ -5,6 +5,7 @@ from app.my_module.repdic import *
 from app.my_module.scheduleparser import *
 from app.my_module.stringformat import *
 from app.my_module.process import *
+from app.my_module.button import *
 from pytz import timezone
 import requests, datetime, json
 
@@ -14,6 +15,15 @@ import requests, datetime, json
 # menu/SnowFlowerThree.json   향설3 생활관
 # menu/StudentUnion.json      학생 회관
 # menu/FacultyRestaurant.json 교직원 식당
+
+def keyboard(request) :
+
+	return JsonResponse (
+		{
+			'type' : 'buttons',
+			'buttons' : basic_button
+		}
+	)
 
 @csrf_exempt
 def answer(request) :
