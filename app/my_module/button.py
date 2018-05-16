@@ -10,7 +10,7 @@ basic_button = [
 
 food_info_button = [
 '메뉴',
-'이용 가능 시간',
+'이용 시간',
 '처음으로'
 ]
 

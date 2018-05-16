@@ -47,7 +47,7 @@ def answer(request) :
 
 		return food_sel_process()
 
-	elif content_name == '이용 가능 시간' :
+	elif content_name == '이용 시간' :
 
 		send_message = select_else_button.format(content_name) + using_time
 
