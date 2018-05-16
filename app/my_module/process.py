@@ -1,3 +1,6 @@
+from django.http import JsonResponse
+import requests
+
 # 결과를 출력하고 다시 입력을 받기 위한 함수
 def re_process(output) :
 
