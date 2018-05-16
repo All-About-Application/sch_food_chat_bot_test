@@ -90,7 +90,15 @@ def answer(request) :
 	today_weekday = today.weekday()
 
 	if content_name == '학식' :
+		return food_info_button()
+
+	elif content_name == '메뉴' :
 		return food_sel_process()
+
+	elif content_name == '이용가능 시간' :
+		send_message = using_time
+
+		return re_process(send_message)
 
 	elif content_name == '향설1 생활관' :
 
