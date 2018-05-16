@@ -35,3 +35,19 @@ def food_sel_process() :
 			}
 		}
 	)
+
+def food_info_process() :
+
+	return JsonResponse (
+		{
+			'message' :
+			{
+				'text' : '[확인할 수 있는 정보]\n· 메뉴 / 이용 가능 시간'
+			},
+			'keyboard' :
+			{
+				'type' : 'buttons',
+				'buttons' : food_info_button
+			}
+		}
+	)

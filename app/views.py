@@ -41,7 +41,7 @@ def answer(request) :
 
 	if content_name == '학식' :
 
-		return food_info_button()
+		return food_info_process()
 
 	elif content_name == '메뉴' :
 
