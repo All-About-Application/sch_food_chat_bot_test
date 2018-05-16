@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from app.my_module.button import *
 import requests
 
 # 결과를 출력하고 다시 입력을 받기 위한 함수

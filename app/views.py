@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from app.my_module.button import *
 from app.my_module.repdic import *
 from app.my_module.scheduleparser import *
 from app.my_module.stringformat import *
@@ -40,7 +39,7 @@ def answer(request) :
 
 	elif content_name == '이용가능 시간' :
 
-		send_message = using_time
+		send_message = select_else_button.format('학식/' + content_name) + using_time
 
 		return re_process(send_message)
 
